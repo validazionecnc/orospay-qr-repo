@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Orospay Redirect</title>
 <style>
-  /* Imposta html e body al 100% e centra il loader */
   html, body {
     height: 100%;
     width: 100%;
@@ -17,28 +16,19 @@
     font-family: sans-serif;
     background: #f0f0f0;
   }
-
-  /* Loader animato */
   .loader {
     border: 6px solid #f3f3f3;
     border-top: 6px solid #3498db;
     border-radius: 50%;
     width: 60px;
     height: 60px;
-    animation: spin 0.5s linear infinite; /* rotazione veloce */
+    animation: spin 0.5s linear infinite;
   }
-
   @keyframes spin {
     0% { transform: rotate(0deg);}
     100% { transform: rotate(360deg);}
   }
-
-  p {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 16px;
-    color: #555;
-  }
+  p { margin-top: 20px; text-align: center; font-size: 16px; color: #555; }
 </style>
 </head>
 <body>
@@ -46,24 +36,10 @@
   <div class="loader"></div>
   <p>Sto reindirizzando…</p>
 </div>
-
 <script>
-  // Nascondi tutto subito per evitare flash
-  document.documentElement.style.visibility = 'hidden';
-
-  // Redirect quasi istantaneo
-  const ua = navigator.userAgent || navigator.vendor || window.opera;
-  setTimeout(() => {
-    if (/android/i.test(ua)) {
-      window.location.replace("https://play.google.com/store/apps/details?id=com.cncspa.app");
-    } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-      window.location.replace("https://apps.apple.com/it/app/orospay/id1522538511?l=en-GB");
-    } else {
-      // Fallback desktop: mostra loader e messaggio
-      document.documentElement.style.visibility = 'visible';
-      document.querySelector("p").textContent = "Apri questo link dal tuo dispositivo mobile";
-    }
-  }, 500); // 0,5 secondi
+  // Fallback desktop: mostra loader e messaggio
+  document.documentElement.style.visibility = 'visible';
+  document.querySelector("p").textContent = "Apri questo link dal tuo dispositivo mobile";
 </script>
 </body>
 </html>
