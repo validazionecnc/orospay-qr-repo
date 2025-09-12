@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>Redirecting...</title>
-  <!-- Meta refresh fallback -->
-  <meta http-equiv="refresh" content="0;url=https://apps.apple.com/it/app/orospay/id1522538511?l=en-GB" id="metaRedirect">
+  <!-- Meta-refresh di fallback solo per Android/Desktop -->
+  <meta id="metaRedirect" http-equiv="refresh" content="2;url=https://apps.apple.com/it/app/orospay/id1522538511?l=en-GB">
   <script>
     (function() {
       const iosUrl = 'https://apps.apple.com/it/app/orospay/id1522538511?l=en-GB';
@@ -15,7 +15,14 @@
       const isIOS = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints>1);
 
       const targetUrl = isIOS ? iosUrl : isAndroid ? androidUrl : iosUrl;
-      document.getElementById('metaRedirect').setAttribute('content', '0;url=' + targetUrl);
+
+      // Aggiorna meta-refresh solo per fallback (non iOS)
+      if (!isIOS) {
+        const meta = document.getElementById('metaRedirect');
+        meta.setAttribute('content', '2;url=' + targetUrl);
+      }
+
+      // Redirect immediato via JS
       window.location.replace(targetUrl);
     })();
   </script>
@@ -24,7 +31,7 @@
   </style>
 </head>
 <body>
-  <p>Reindirizzamento in corso… se non avviene, clicca <a id="fallbackLink" href="#">qui</a>.</p>
+  <p style="display:none;">Reindirizzamento in corso… se non avviene, clicca <a id="fallbackLink" href="#">qui</a>.</p>
   <script>
     document.getElementById('fallbackLink').href =
       /Android/i.test(navigator.userAgent) ? 'https://play.google.com/store/apps/details?id=com.cncspa.app'
