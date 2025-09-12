@@ -14,32 +14,38 @@
     justify-content: center;
     align-items: center;
     font-family: sans-serif;
-    background: #f0f0f0;
+    background: #ffffff; /* bianco */
+    flex-direction: column;
   }
+
   .loader {
-    border: 6px solid #f3f3f3;
-    border-top: 6px solid #3498db;
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 0.5s linear infinite;
+    width: 80px;
+    height: 80px;
+    animation: spin 1s linear infinite; /* più lento e visibile */
   }
+
   @keyframes spin {
     0% { transform: rotate(0deg);}
     100% { transform: rotate(360deg);}
   }
-  p { margin-top: 20px; text-align: center; font-size: 16px; color: #555; }
+
+  p {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+  }
 </style>
 </head>
 <body>
-<div id="loader-container">
   <div class="loader"></div>
-  <p>Sto reindirizzando…</p>
-</div>
+  <p>Operazione in corso...</p>
+
 <script>
-  // Fallback desktop: mostra loader e messaggio
+  // Se non viene fatto redirect lato server (desktop o errori), mostra la pagina
   document.documentElement.style.visibility = 'visible';
-  document.querySelector("p").textContent = "Apri questo link dal tuo dispositivo mobile";
 </script>
 </body>
 </html>
