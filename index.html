@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Orospay Redirect</title>
-  <script>
-    setTimeout(() => {
-      const ua = navigator.userAgent || navigator.vendor || window.opera;
-      if (/android/i.test(ua)) {
-        window.location.replace("https://play.google.com/store/apps/details?id=com.cncspa.app");
-      } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-        window.location.replace("https://apps.apple.com/it/app/orospay/id1522538511?l=en-GB");
-      } else {
-        document.body.innerHTML = "<p>Apri questo link dal tuo dispositivo mobile:</p><ul><li><a href='https://play.google.com/store/apps/details?id=com.cncspa.app'>Android</a></li><li><a href='https://apps.apple.com/it/app/orospay/id1522538511?l=en-GB'>iOS</a></li></ul>";
-      }
-    }, 10);
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orospay Redirect</title>
+<script>
+  // Nascondi tutto immediatamente
+  document.documentElement.style.visibility = 'hidden';
+  
+  const ua = navigator.userAgent || navigator.vendor || window.opera;
+
+  // Redirect istantaneo in base al dispositivo
+  if (/android/i.test(ua)) {
+    window.location.replace("https://play.google.com/store/apps/details?id=com.cncspa.app");
+  } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+    window.location.replace("https://apps.apple.com/it/app/orospay/id1522538511?l=en-GB");
+  } else {
+    // Fallback desktop: mostra la pagina solo per desktop
+    document.documentElement.style.visibility = 'visible';
+    document.body.innerHTML = "<p>Apri questo link dal tuo dispositivo mobile:</p><ul><li><a href='https://play.google.com/store/apps/details?id=com.cncspa.app'>Android</a></li><li><a href='https://apps.apple.com/it/app/orospay/id1522538511?l=en-GB'>iOS</a></li></ul>";
+  }
+</script>
 </head>
-<body>
-  <p>Redirezionamento in corso...</p>
-</body>
+<body></body>
 </html>
