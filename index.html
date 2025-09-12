@@ -1,42 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="utf-8">
-  <title>Redirecting...</title>
-  <!-- Meta-refresh fallback rapidissimo -->
-  <meta id="metaRedirect" http-equiv="refresh" content="0.1;url=https://apps.apple.com/it/app/orospay/id1522538511?l=en-GB">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orospay Redirect</title>
   <script>
-    (function() {
-      const iosUrl = 'https://apps.apple.com/it/app/orospay/id1522538511?l=en-GB';
-      const androidUrl = 'https://play.google.com/store/apps/details?id=com.cncspa.app';
-      const ua = navigator.userAgent || '';
-
-      const isAndroid = /Android/i.test(ua);
-      const isIOS = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints>1);
-
-      const targetUrl = isIOS ? iosUrl : isAndroid ? androidUrl : iosUrl;
-
-      // Aggiorna meta-refresh fallback
-      const meta = document.getElementById('metaRedirect');
-      meta.setAttribute('content', '0.1;url=' + targetUrl);
-
-      // Redirect immediato via JS
-      window.location.replace(targetUrl);
-    })();
+    setTimeout(() => {
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
+      if (/android/i.test(ua)) {
+        window.location.replace("https://play.google.com/store/apps/details?id=com.cncspa.app");
+      } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+        window.location.replace("https://apps.apple.com/it/app/orospay/id1522538511?l=en-GB");
+      } else {
+        // fallback per desktop
+        document.body.innerHTML = "<p>Apri questo link dal tuo dispositivo mobile:</p><ul><li><a href='https://play.google.com/store/apps/details?id=com.cncspa.app'>Android</a></li><li><a href='https://apps.apple.com/it/app/orospay/id1522538511?l=en-GB'>iOS</a></li></ul>";
+      }
+    }, 10); // 0,01 secondi
   </script>
-  <style>
-    /* Corpo invisibile per evitare pagina bianca su iOS */
-    body { display:none; margin:0; }
-  </style>
 </head>
 <body>
-  <!-- Fallback invisibile -->
-  <p style="display:none;">Reindirizzamento in corso… se non avviene, clicca <a id="fallbackLink" href="#">qui</a>.</p>
-  <script>
-    // Aggiorna link fallback
-    document.getElementById('fallbackLink').href =
-      /Android/i.test(navigator.userAgent) ? 'https://play.google.com/store/apps/details?id=com.cncspa.app'
-      : 'https://apps.apple.com/it/app/orospay/id1522538511?l=en-GB';
-  </script>
+  <p>Redirezionamento in corso...</p>
 </body>
 </html>
