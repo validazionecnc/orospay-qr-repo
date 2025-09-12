@@ -1,14 +1,17 @@
-# OROSPay QR redirector
+# Orospay Redirect QR
 
-Questo repository permette di creare un QR code che reindirizza automaticamente l’utente su App Store o Google Play in base al dispositivo.
+Pagina HTML e script Python per generare un QR code che reindirizza rapidamente su Android o iOS.
 
-## Come funziona
-- Carica `index.html` su GitHub Pages.
-- Genera il QR code con `generate_qr.py`, puntando all’URL GitHub Pages.
+## Contenuto
 
-## Passi rapidi
-1. Carica tutti i file su GitHub in un nuovo repository.
-2. Abilita GitHub Pages dalla root (`main` branch, folder `/`).
-3. Aggiorna `generate_qr.py` con l’URL pubblicato e rigenera il QR code.
+- `index.html` : pagina con redirect immediato (timeout 0,01s)
+- `generate_qr.py` : script Python per creare il QR code
+- `orospay-redirect-qr.png` : QR code generato
+- `LICENSE` : licenza MIT
 
-Il QR code risultante aprirà direttamente il corretto store su iOS e Android senza mostrare pagine intermedie.
+## Uso
+
+Apri `index.html` su GitHub Pages o altro server statico.  
+Per rigenerare il QR code:
+```bash
+python generate_qr.py
