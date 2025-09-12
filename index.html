@@ -16,13 +16,11 @@
 
       const targetUrl = isIOS ? iosUrl : isAndroid ? androidUrl : iosUrl;
 
-      // Aggiorna meta-refresh solo per fallback (non iOS)
       if (!isIOS) {
         const meta = document.getElementById('metaRedirect');
         meta.setAttribute('content', '2;url=' + targetUrl);
       }
 
-      // Redirect immediato via JS
       window.location.replace(targetUrl);
     })();
   </script>
