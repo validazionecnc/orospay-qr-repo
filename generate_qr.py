@@ -5,8 +5,8 @@ Requisiti: pip install qrcode[pil]
 """
 import qrcode
 
-# Inserisci qui l'URL GitHub Pages una volta pubblicato index.html
-redirector_url = 'https://tuoutente.github.io/orospay-qr-repo/'
+# Inserisci qui l'URL GitHub Pages del repository
+redirector_url = 'https://validazionecnc.github.io/orospay-qr-repo/'
 
 if not redirector_url:
     raise SystemExit('Imposta redirector_url nel file generate_qr.py')
