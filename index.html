@@ -16,7 +16,7 @@
 
       const targetUrl = isIOS ? iosUrl : isAndroid ? androidUrl : iosUrl;
 
-      // Aggiorna meta-refresh fallback (utile per Android/desktop)
+      // Aggiorna meta-refresh fallback
       const meta = document.getElementById('metaRedirect');
       meta.setAttribute('content', '0.1;url=' + targetUrl);
 
