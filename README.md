@@ -1,17 +1,17 @@
-# Orospay Redirect QR
+# Orospay QR Redirect
 
-Pagina HTML e script Python per generare un QR code che reindirizza rapidamente su Android o iOS.
+Redirect invisibile su Android/iOS usando Vercel serverless function.
 
 ## Contenuto
 
-- `index.html` : pagina con redirect immediato (timeout 0,01s)
-- `generate_qr.py` : script Python per creare il QR code
+- `index.html` : fallback desktop con loader
+- `api/redirect.js` : redirect serverless
+- `generate_qr.py` : script Python per generare QR code
 - `orospay-redirect-qr.png` : QR code generato
-- `LICENSE` : licenza MIT
+- `.gitignore`
 
 ## Uso
 
-Apri `index.html` su GitHub Pages o altro server statico.  
-Per rigenerare il QR code:
-```bash
-python generate_qr.py
+1. Deploy del repository su Vercel
+2. Aggiornare il link in `generate_qr.py` con l'URL Vercel
+3. Eseguire `python generate_qr.py` per creare il QR code
