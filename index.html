@@ -4,23 +4,56 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Orospay Redirect</title>
-<script>
-  // Nascondi tutto immediatamente
-  document.documentElement.style.visibility = 'hidden';
-  
-  const ua = navigator.userAgent || navigator.vendor || window.opera;
-
-  // Redirect istantaneo in base al dispositivo
-  if (/android/i.test(ua)) {
-    window.location.replace("https://play.google.com/store/apps/details?id=com.cncspa.app");
-  } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-    window.location.replace("https://apps.apple.com/it/app/orospay/id1522538511?l=en-GB");
-  } else {
-    // Fallback desktop: mostra la pagina solo per desktop
-    document.documentElement.style.visibility = 'visible';
-    document.body.innerHTML = "<p>Apri questo link dal tuo dispositivo mobile:</p><ul><li><a href='https://play.google.com/store/apps/details?id=com.cncspa.app'>Android</a></li><li><a href='https://apps.apple.com/it/app/orospay/id1522538511?l=en-GB'>iOS</a></li></ul>";
+<style>
+  /* Stili per il loader centrato */
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: sans-serif;
+    background: #f0f0f0;
   }
-</script>
+  .loader {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #3498db;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+  }
+  p {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 16px;
+    color: #555;
+  }
+</style>
 </head>
-<body></body>
+<body>
+<div>
+  <div class="loader"></div>
+  <p>Sto reindirizzando…</p>
+</div>
+
+<script>
+  // Redirect in base al dispositivo dopo un brevissimo delay
+  setTimeout(() => {
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    if (/android/i.test(ua)) {
+      window.location.replace("https://play.google.com/store/apps/details?id=com.cncspa.app");
+    } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+      window.location.replace("https://apps.apple.com/it/app/orospay/id1522538511?l=en-GB");
+    } else {
+      // fallback desktop: cambia il testo
+      document.querySelector("p").textContent = "Apri questo link dal tuo dispositivo mobile";
+    }
+  }, 10); // 0,01 secondi
+</script>
+</body>
 </html>
