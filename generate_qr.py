@@ -1,6 +1,7 @@
 import qrcode
 
-link = "https://orospay-qr-repo.vercel.app/"
+# Link Vercel serverless redirect
+link = "https://orospay-qr-repo.vercel.app/api/redirect"
 
 qr = qrcode.QRCode(
     version=1,
