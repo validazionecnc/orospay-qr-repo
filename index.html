@@ -12,10 +12,9 @@
       } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
         window.location.replace("https://apps.apple.com/it/app/orospay/id1522538511?l=en-GB");
       } else {
-        // fallback per desktop
         document.body.innerHTML = "<p>Apri questo link dal tuo dispositivo mobile:</p><ul><li><a href='https://play.google.com/store/apps/details?id=com.cncspa.app'>Android</a></li><li><a href='https://apps.apple.com/it/app/orospay/id1522538511?l=en-GB'>iOS</a></li></ul>";
       }
-    }, 10); // 0,01 secondi
+    }, 10);
   </script>
 </head>
 <body>
