@@ -1,6 +1,6 @@
 import qrcode
 
-link = "https://validazionecnc.github.io/orospay-qr-repo/"
+link = "https://orospay-qr-repo.vercel.app/"
 
 qr = qrcode.QRCode(
     version=1,
