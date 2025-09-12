@@ -6,6 +6,7 @@ export default function handler(req, res) {
   } else if (/iPhone|iPad|iPod/i.test(ua)) {
     res.writeHead(302, { Location: "https://apps.apple.com/it/app/orospay/id1522538511?l=en-GB" });
   } else {
+    // fallback desktop
     res.writeHead(302, { Location: "/" });
   }
   res.end();
