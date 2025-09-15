@@ -6,12 +6,23 @@
   <title>Orospay</title>
 
   <style>
-    /* Lo sfondo con il logo è già incluso nell'immagine di sfondo */
-    body {
+    /* Corpo con sfondo responsive 16:9 */
+    html, body {
       margin: 0;
-      height: 100vh;
-      background: url('Formazione.png') no-repeat center center;
-      background-size: contain;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      background-color: #0b66ff; /* fallback blu OrosPay */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    body img#bg {
+      width: 100%;      /* riempie tutta la larghezza dello schermo */
+      height: auto;     /* mantiene rapporto 16:9 */
+      max-height: 100%; /* non supera l'altezza dello schermo */
+      display: block;
     }
   </style>
 
@@ -20,21 +31,25 @@
       var androidUrl = "https://play.google.com/store/apps/details?id=com.cncspa.app";
       var iosUrl = "https://apps.apple.com/it/app/orospay/id1522538511?l=en-GB";
       var ua = navigator.userAgent || navigator.vendor || window.opera;
-      var target;
+      var target = /android/i.test(ua) ? androidUrl
+                 : (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) ? iosUrl
+                 : androidUrl; // fallback
 
-      if (/android/i.test(ua)) {
-        target = androidUrl;
-      } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-        target = iosUrl;
-      } else {
-        target = androidUrl; // fallback
-      }
+      // Preload immagine
+      var img = new Image();
+      img.src = 'sfondo-logo.png';
+      img.onload = function() {
+        // Redirect dopo 1 secondo per mostrare lo sfondo
+        setTimeout(function() {
+          window.location.replace(target);
+        }, 1000);
+      };
 
-      // Redirect immediato
-      //window.location.replace(target);
-       setTimeout(function() {
-        window.location.replace(target);
-      }, 200);
+      // Mostra immagine subito
+      document.addEventListener('DOMContentLoaded', function() {
+        document.body.appendChild(img);
+        img.id = "bg";
+      });
     })();
   </script>
 </head>
