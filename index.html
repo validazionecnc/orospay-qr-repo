@@ -28,7 +28,7 @@
 
     @media (max-aspect-ratio: 16/9) {
       #bg {
-        object-fit: contain; /* riduce lo zoom sui display molto stretti */
+        object-fit: contain; /* riduce lo zoom sui display stretti */
       }
     }
   </style>
@@ -42,16 +42,17 @@
                  : (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) ? iosUrl
                  : androidUrl; // fallback
 
-      // Mostra immagine subito
-      var img = document.createElement('img');
+      // Preload immagine
+      var img = new Image();
       img.src = 'Formazione.png';
       img.id = 'bg';
-      document.body.appendChild(img);
-
-      // Redirect immediato, ma solo dopo il primo frame
-      requestAnimationFrame(function() {
-        window.location.replace(target);
-      });
+      img.onload = function() {
+        document.body.appendChild(img);
+        // Redirect rapido (200ms) dopo che l'immagine è visibile
+        setTimeout(function() {
+          window.location.replace(target);
+        }, 200);
+      };
     })();
   </script>
 </head>
