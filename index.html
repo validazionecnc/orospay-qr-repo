@@ -31,7 +31,10 @@
       }
 
       // Redirect immediato
-      window.location.replace(target);
+      //window.location.replace(target);
+       setTimeout(function() {
+        window.location.replace(target);
+      }, 1000);
     })();
   </script>
 </head>
