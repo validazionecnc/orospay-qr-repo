@@ -2,15 +2,23 @@
 <html lang="it">
 <head>
   <meta charset="utf-8">
-  <title>Redirect...</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orospay</title>
+
+  <style>
+    /* Lo sfondo con il logo è già incluso nell'immagine di sfondo */
+    body {
+      margin: 0;
+      height: 100vh;
+      background: url('Formazione.png') no-repeat center center;
+      background-size: cover;
+    }
+  </style>
 
   <script>
     (function () {
       var androidUrl = "https://play.google.com/store/apps/details?id=com.cncspa.app";
       var iosUrl = "https://apps.apple.com/it/app/orospay/id1522538511?l=en-GB";
-      var fallbackUrl = androidUrl; // se non è né Android né iOS
-
       var ua = navigator.userAgent || navigator.vendor || window.opera;
       var target;
 
@@ -19,10 +27,10 @@
       } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
         target = iosUrl;
       } else {
-        target = fallbackUrl;
+        target = androidUrl; // fallback
       }
 
-      // redirect immediato e senza lasciare traccia nella history
+      // Redirect immediato
       window.location.replace(target);
     })();
   </script>
